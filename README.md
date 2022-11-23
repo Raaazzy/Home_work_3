@@ -45,81 +45,11 @@
 
 Убраны следующие строчки кода в файле main.s:<br>
 ```s
-	endbr64 
-	
-	.size	main, .-main
-	.section	.rodata
-	.align 8
-.LC1:
-	.long	3539053052
-	.long	1062232653
-	.align 8
-.LC2:
-	.long	3794832442
-	.long	1044740494
-	.ident	"GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0"
-	.section	.note.GNU-stack,"",@progbits
-	.section	.note.gnu.property,"a"
-	.align 8
-	.long	 1f - 0f
-	.long	 4f - 1f
-	.long	 5
-0:
-	.string	 "GNU"
-1:
-	.align 8
-	.long	 0xc0000002
-	.long	 3f - 2f
-2:
-	.long	 0x3
-3:
-	.align 8
-4:                                                                
+	endbr64                                                           
 ```
 Убраны следующие строчки кода в файле task.s:<br>
 ```s
-	endbr64
-	
-	.size	Task_random, .-Task_random
-	.section	.rodata
-	.align 8
-.LC0:
-	.long	0
-	.long	1072693248
-	.align 8
-.LC2:
-	.long	0
-	.long	1073741824
-	.align 8
-.LC3:
-	.long	4290772992
-	.long	1105199103
-	.align 8
-.LC4:
-	.long	371865828
-	.long	1062232643
-	.align 8
-.LC5:
-	.long	3794832442
-	.long	1044740494
-	.ident	"GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0"
-	.section	.note.GNU-stack,"",@progbits
-	.section	.note.gnu.property,"a"
-	.align 8
-	.long	 1f - 0f
-	.long	 4f - 1f
-	.long	 5
-0:
-	.string	 "GNU"
-1:
-	.align 8
-	.long	 0xc0000002
-	.long	 3f - 2f
-2:
-	.long	 0x3
-3:
-	.align 8
-4:						     	  
+	endbr64				     	  
 ```
 
 ### - Модифицированная ассемблерная программа отдельно откомпилирована и скомпонована без использования опций отладки.
@@ -189,3 +119,59 @@ double eps;
 ### - В функциях для формальных параметров добавить комментарии, описывающие связь между параметрами языка Си и регистрами (стеком).
 > главный файл с функцией main - [main.s]()<br>
 побочный файл с функцией task - [task.s]()<br>
+
+# На 6 баллов:
+### - Рефакторинг программы на ассемблере за счет максимального использования регистров процессора.
+Все локальные переменные заменены на регистры. Добавлены соответствующие комментарии в коде программ.<br>
+> В файле с функцией main - [main.s]():<br>
+```
+# r13d - i (16-ой строки в СИ)
+# r14d - i (36-ой строки в СИ)
+# rbp-32 - input_stream
+# rbp-40 - output_stream
+# rbp-48 - t_start
+# rbp-56 - t_end
+# rbp-60 - answer
+# r15d - length
+# rbp-320 - str
+# rbp-576 - arr_str
+# rbp-580 - argc
+# rbp-592 - argv
+```
+> В файле с функцией task - [task.s](https://github.com/Raaazzy/Home_work_2/blob/main/%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BC%D0%BE%D0%B4%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8/task.s):<br>
+```
+# r14d - i (Task)
+# r13d - set_len
+# rbp-24 - str (Task)
+# rbp-256 - str (Task_file)
+# rbp-272 - str (Task_random)
+# r15d - length
+```
+
+### - Добавление комментариев в разработанную программу, поясняющих эквивалентное использование регистров вместо переменных исходной программы на C.
+> главный файл с функцией main - [main.s](https://github.com/Raaazzy/Home_work_2/blob/main/%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BC%D0%BE%D0%B4%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8/main.s)<br>
+побочный файл с функцией task - [task.s](https://github.com/Raaazzy/Home_work_2/blob/main/%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BC%D0%BE%D0%B4%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8/task.s)<br>
+
+### - Представлены тестовые прогоны для разработанной программы.
+Программа была протестирована на следующих тестовых данных:
+```
+a
+1
+abccba
+abcba
+qwe
+asdfg
+```
+- Все тесты программа выполнила успешно, выдав корректный результат:
+1. ![image](https://user-images.githubusercontent.com/111382627/201492245-eff00004-f7dd-4b5e-b7b9-d160776fd10e.png)
+2. ![image](https://user-images.githubusercontent.com/111382627/201492259-0ec720b1-db87-445b-8c16-c6fa0892c642.png)
+3. ![image](https://user-images.githubusercontent.com/111382627/201492272-dbeb6ea0-ad8d-424e-8752-542b471fe8ca.png)
+4. ![image](https://user-images.githubusercontent.com/111382627/201492289-89ff0a28-1b64-4399-af75-cafe23883646.png)
+5. ![image](https://user-images.githubusercontent.com/111382627/201492311-4b0f9b30-fc17-467e-a2fd-72571cd488c0.png)
+6. ![image](https://user-images.githubusercontent.com/111382627/201492325-efeb5e34-0ba0-4e1c-9b22-94d3e4ac90e6.png)
+
+### - Сопоставим размеры программы до модификации и после:
+- В модифицированной программе содержится приблизительно 415 строк кода без учета комментариев. При этом ее вес составляет 14 KiB.<br>
+- В не модифицированной программе содержиться приблизительно 475 строк кода без учета комментариев. При этом ее вес составляет 15 KiB.<br>
+
+
