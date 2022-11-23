@@ -125,53 +125,103 @@ double eps;
 Все локальные переменные заменены на регистры. Добавлены соответствующие комментарии в коде программ.<br>
 > В файле с функцией main - [main.s]():<br>
 ```
-# r13d - i (16-ой строки в СИ)
-# r14d - i (36-ой строки в СИ)
-# rbp-32 - input_stream
-# rbp-40 - output_stream
-# rbp-48 - t_start
-# rbp-56 - t_end
-# rbp-60 - answer
-# r15d - length
-# rbp-320 - str
-# rbp-576 - arr_str
-# rbp-580 - argc
-# rbp-592 - argv
+# r15d - i 
+# rbp-16 - input_stream
+# rbp-24 - output_stream
+# rbp-32 - t_start
+# rbp-40 - t_end
+# rbp-48 - epsilon
+# rbp-56 - temp
+# rbp-68 - argc 
+# rbp-80 - argv
 ```
-> В файле с функцией task - [task.s](https://github.com/Raaazzy/Home_work_2/blob/main/%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BC%D0%BE%D0%B4%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8/task.s):<br>
+> В файле с функцией task - [task.s]():<br>
 ```
-# r14d - i (Task)
-# r13d - set_len
-# rbp-24 - str (Task)
-# rbp-256 - str (Task_file)
-# rbp-272 - str (Task_random)
-# r15d - length
+# rbp-8 - x
+# rbp-40 - e
+# rbp-8 - a
+# rbp-16 - b
+# rbp-24 - c
+# rbp-8 - eps
 ```
 
 ### - Добавление комментариев в разработанную программу, поясняющих эквивалентное использование регистров вместо переменных исходной программы на C.
-> главный файл с функцией main - [main.s](https://github.com/Raaazzy/Home_work_2/blob/main/%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BC%D0%BE%D0%B4%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8/main.s)<br>
-побочный файл с функцией task - [task.s](https://github.com/Raaazzy/Home_work_2/blob/main/%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BC%D0%BE%D0%B4%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8/task.s)<br>
+> главный файл с функцией main - [main.s]()<br>
+побочный файл с функцией task - [task.s]()<br>
 
 ### - Представлены тестовые прогоны для разработанной программы.
 Программа была протестирована на следующих тестовых данных:
 ```
-a
-1
-abccba
-abcba
-qwe
-asdfg
+0.1
+0.001
+0.00000001
+0.00034
+0.0000099
 ```
 - Все тесты программа выполнила успешно, выдав корректный результат:
-1. ![image](https://user-images.githubusercontent.com/111382627/201492245-eff00004-f7dd-4b5e-b7b9-d160776fd10e.png)
-2. ![image](https://user-images.githubusercontent.com/111382627/201492259-0ec720b1-db87-445b-8c16-c6fa0892c642.png)
-3. ![image](https://user-images.githubusercontent.com/111382627/201492272-dbeb6ea0-ad8d-424e-8752-542b471fe8ca.png)
-4. ![image](https://user-images.githubusercontent.com/111382627/201492289-89ff0a28-1b64-4399-af75-cafe23883646.png)
-5. ![image](https://user-images.githubusercontent.com/111382627/201492311-4b0f9b30-fc17-467e-a2fd-72571cd488c0.png)
-6. ![image](https://user-images.githubusercontent.com/111382627/201492325-efeb5e34-0ba0-4e1c-9b22-94d3e4ac90e6.png)
+1. ![image](https://user-images.githubusercontent.com/111382627/203544049-7338f091-d50b-477e-bef9-7329658ed1df.png)
+2. ![image](https://user-images.githubusercontent.com/111382627/203544174-ba13f72f-f466-4c32-a530-3ea74e5eeaa5.png)
+3. ![image](https://user-images.githubusercontent.com/111382627/203544260-8f1827c7-bfaa-469c-bfda-403c443c9959.png)
+4. ![image](https://user-images.githubusercontent.com/111382627/203544389-fa1fad3a-f104-4247-8d5f-b67ee5e8da12.png)
+5. ![image](https://user-images.githubusercontent.com/111382627/203544486-66c0bb4f-1aaa-4ac6-bb4e-e97cb7eacfad.png)
 
 ### - Сопоставим размеры программы до модификации и после:
-- В модифицированной программе содержится приблизительно 415 строк кода без учета комментариев. При этом ее вес составляет 14 KiB.<br>
-- В не модифицированной программе содержиться приблизительно 475 строк кода без учета комментариев. При этом ее вес составляет 15 KiB.<br>
+- В модифицированной программе содержится приблизительно 423 строк кода без учета комментариев. При этом ее вес составляет 13 KiB.<br>
+- В не модифицированной программе содержиться приблизительно 447 строк кода без учета комментариев. При этом ее вес составляет 14 KiB.<br>
 
+# На 7 баллов:
+### - Реализация программы на ассемблере, полученной после рефакторинга, в виде двух или более единиц компиляции.
+Было получено 2 единицы компиляции: 
+> главный файл с функцией main - [main.s]()<br>
+побочный файл с функцией task для определения палиндрома - [task.s]()<br>
+
+Программа скомпанована с помощью команд:
+```s
+gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions -fverbose-asm ./main.c -S -o ./main.s
+gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions -fverbose-asm ./task.c -S -o ./task.s
+gcc ./main.s -c -o main.o
+gcc ./task.s -c -o task.o
+gcc ./task.o main.o -o program.exe
+```
+### - Задание файлов с исходными данными и файла для вывода результатов с использованием аргументов командной строки.
+> главный файл с функцией main - [main.c]()<br>
+побочный файл с функцией task - [task.c]()<br>
+
+Данный пункт реализован с помощью добавления фрагмента кода в функцию main:
+```c
+FILE *input_stream = fopen(argv[1], "r");
+if (input_stream == NULL) {
+	printf("The name of the data entry file was entered incorrectly.\n");
+	return 0;
+}
+fscanf(input_stream, "%lf", &epsilon);
+fclose(input_stream);
+if (epsilon > 0.001 || epsilon < 0.00000001) {
+	printf("The entered epsilon is not in range [0.00000001; 0.001].\n");
+	return 0;
+}
+FILE *output_stream = fopen(argv[2], "w");
+if (output_stream == NULL) {
+	printf("The name of the output file was entered incorrectly.\n");
+	return 0;
+}
+fprintf(output_stream, "%lf ", Task(epsilon));
+fclose(output_stream);
+return 0;
+```
+
+### - Результат работы с тестовыми данными:
+С данными файлами можно протестировать программу лично: [тестовые данные]()<br>
+
+Тип входных данных: десятичная дробь, лежащая в диапазоне [0.00000001, 0.001].<br>
+Тип выходных данных: десятичная дробь.<br>
+
+Если входные данные поступили из файла, то и выведутся в файл.<br>
+Если входные данные поступили из консоли, то и будут вывеены в консоль.<br>
+
+![image](https://user-images.githubusercontent.com/111382627/203645554-0bb5a02b-2530-4641-8aca-d75b687e6efa.png)
+![image](https://user-images.githubusercontent.com/111382627/203645741-6e38580c-baa7-48f0-b4cf-103be730468c.png)
+![image](https://user-images.githubusercontent.com/111382627/203645847-6cb57cb2-c14f-4911-b0bf-13523b912976.png)
+![image](https://user-images.githubusercontent.com/111382627/203645968-aea00373-8209-427b-8731-cfbc0a2d81d9.png)
+![image](https://user-images.githubusercontent.com/111382627/203646053-c77c0771-85cd-4e6a-9295-48619c9800b1.png)
 
