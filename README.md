@@ -147,3 +147,45 @@ gcc ./task.o main.o -o program.exe
 3. ![image](https://user-images.githubusercontent.com/111382627/203544260-8f1827c7-bfaa-469c-bfda-403c443c9959.png)
 4. ![image](https://user-images.githubusercontent.com/111382627/203544389-fa1fad3a-f104-4247-8d5f-b67ee5e8da12.png)
 5. ![image](https://user-images.githubusercontent.com/111382627/203544486-66c0bb4f-1aaa-4ac6-bb4e-e97cb7eacfad.png)
+
+# На 5 баллов:
+### - В реализованной программе использовать функции с передачей данных через параметры.
+> файл с функцией task - [task.c]()<br>
+
+Для реализации данного пункта использовалась отдельные функции Task(const double e) и function(double x):
+```c
+double function(double x)
+double Task(const double e)
+
+```
+
+### - Использовать локальные переменные.
+> главный файл с функцией main - [main.c]()<br>
+побочный файл с функцией task - [task.c]()<br>
+
+Локальные переменные, которые были использованы в функции main:
+```c
+int i;
+double epsilon;
+char* temp;
+time_t t_start;
+time_t t_end;
+FILE *input_stream;
+FILE *output_stream;
+```
+Локальные переменные, которые были использованы в функции task:
+```c
+double x;
+double e;
+double a;
+double b;
+double c;
+double eps;
+```
+### - В ассемблерную программу при вызове функции добавить комментарии, описывающие передачу фактических параметров и перенос возвращаемого результата.
+> главный файл с функцией main - [main.s]()<br>
+побочный файл с функцией task - [task.s]()<br>
+
+### - В функциях для формальных параметров добавить комментарии, описывающие связь между параметрами языка Си и регистрами (стеком).
+> главный файл с функцией main - [main.s]()<br>
+побочный файл с функцией task - [task.s]()<br>
