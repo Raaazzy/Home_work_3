@@ -296,11 +296,11 @@ double Task_random() {
 
 # На 9 баллов:
 ### Сравнение программы до и после модификации по весу и скорости выполнения задач:
-> Программа оптимизированная на асемблере - [тык](https://github.com/Raaazzy/Home_work_3/tree/main/%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BC%D0%BE%D0%B4%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)<br>
--O - [тык](https://github.com/Raaazzy/Home_work_3/tree/main/-O)<br>
--O2 - [тык](https://github.com/Raaazzy/Home_work_3/tree/main/-O2)<br>
--O3 - [тык](https://github.com/Raaazzy/Home_work_3/tree/main/-O3)<br>
--Os - [тык](https://github.com/Raaazzy/Home_work_3/tree/main/-Os)<br>
+> [Программа оптимизированная на асемблере](https://github.com/Raaazzy/Home_work_3/tree/main/%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BC%D0%BE%D0%B4%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)<br>
+[-O](https://github.com/Raaazzy/Home_work_3/tree/main/-O)<br>
+[-O2](https://github.com/Raaazzy/Home_work_3/tree/main/-O2)<br>
+[-O3](https://github.com/Raaazzy/Home_work_3/tree/main/-O3)<br>
+[-Os](https://github.com/Raaazzy/Home_work_3/tree/main/-Os)<br>
 
 |           Программа           |    Опции отладки       |          Вес          |    Скорость            |    Количество строк    |
 |:-----------------------------:|:----------------------:|:---------------------:|:----------------------:|:----------------------:|
