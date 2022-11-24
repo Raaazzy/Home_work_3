@@ -226,3 +226,71 @@ return 0;
 ![image](https://user-images.githubusercontent.com/111382627/203645968-aea00373-8209-427b-8731-cfbc0a2d81d9.png)
 ![image](https://user-images.githubusercontent.com/111382627/203646053-c77c0771-85cd-4e6a-9295-48619c9800b1.png)
 
+# На 8 баллов:
+### - Добавлен генератор случайных наборов данных, расширяющих возможности тестирования:
+> главный файл с функцией main - [main.c]()<br>
+побочный файл с функцией task - [task.c]()<br>
+
+Данный пункт реализован с помощью добавления фрагмента кода в функцию main:
+```c
+double Task_random() {
+	srand(clock());
+	double eps = (double)(rand())/RAND_MAX*(0.001 - 0.00000001) + 0.00000001;
+	printf("Generated epsilon: %lf\n", eps);
+	return Task(eps);
+}
+```
+
+- Тестирование программы прошло успешно:
+![image](https://user-images.githubusercontent.com/111382627/203853841-35a97b8f-21d1-4c18-be80-7118c7173718.png)
+![image](https://user-images.githubusercontent.com/111382627/203854062-288122ef-0e12-4b90-82c4-2e5d7279ab0e.png)
+![image](https://user-images.githubusercontent.com/111382627/203854099-dbfaac5f-3e58-43cb-b7a0-81aa781ec00c.png)
+![image](https://user-images.githubusercontent.com/111382627/203854141-4956fd2a-a9c1-4049-b89a-5408393f8272.png)
+![image](https://user-images.githubusercontent.com/111382627/203854184-37233aa5-5b98-41e8-bbf0-25148908e89c.png)
+
+### - Генератор подключен к программе с выбором в командной строке варианта ввода данных:
+> главный файл с функцией main - [main.c]()<br>
+побочный файл с функцией task - [task.c]()<br>
+
+Проверяю количество элементов введенных в консоль:<br>
+- если равно 1, то значит, что пользователь выбрал рандомную генерацию.<br>
+- если равно 2, то значит, что пользователь выбрал ввод с консоли.<br>
+- если равен 3, то значит, что пользователь выбрал ввод с файла.<br>
+```c
+	if (argc == 1) {}
+        if (argc == 2) {}
+        if (argc == 3) {}
+```
+А какие именно аргументы стоит вводить можно посмотреть [здесь](#explanation).
+
+### - Добавены замеры во времени, которые не учитывают время ввода и вывода данных.
+> главный файл с функцией main - [main.c]()<br>
+побочный файл с функцией task - [task.c]()<br>
+
+Данный пункт осуществлен с помощью добавления таймера в функцию main:
+```c
+// Таймер
+	time_t t_start = clock();
+        for (int i = 0; i < 25000000; ++i) {
+            Task(epsilon);
+        }
+        time_t t_end = clock();
+	printf("Program execution time: %d ms", (int) (difftime(t_end, t_start)) / 1000);
+```
+
+- По результатом замеров, было выявлено, что модифицированная программа работает быстрее в 1,5 раза:<br>
+> Не модифицированная программа:<br>
+![image](https://user-images.githubusercontent.com/111382627/203855275-63c6f488-1878-4ff9-b2dc-7826e70daa7f.png)
+Модифицированная программа:<br>
+![image](https://user-images.githubusercontent.com/111382627/203855257-dfed9297-f5d5-4beb-876d-483dd6c65c41.png)
+
+> Не модифицированная программа:<br>
+![image](https://user-images.githubusercontent.com/111382627/203855377-34571f2d-8305-431d-842f-aa5fc24c8996.png)
+Модифицированная программа:<br>
+![image](https://user-images.githubusercontent.com/111382627/203855328-5696bb3b-bbb2-44a6-94f5-ae57734ba5fb.png)
+
+> Не модифицированная программа:<br>
+![image](https://user-images.githubusercontent.com/111382627/203855433-18b494a4-9fbf-4fb6-9c29-21592446aea7.png)
+Модифицированная программа:<br>
+![image](https://user-images.githubusercontent.com/111382627/203855446-df52e487-9bf0-4a0b-a1ac-af91c7705c08.png)
+
